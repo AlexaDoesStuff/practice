@@ -4,38 +4,17 @@
   src:  url('static/fonts/ApfelGrotezk-Regular.woff') format('woff');
 }
 
-div#answers {
-  font-family: "Apfel";
-  display: flex;
-  flex-direction: column;
-  margin: 1em;
+.container {
+  font-family: 'Apfel';
 }
 
-.identifier {
-  padding: 10px 0 10px 0;
+.left, .right {
+  padding: 2em;
+}
+
+.quote {
+  border-radius: 5px;
+  border: 1px solid black;
+  min-width: 500px;
   margin: 10px 0 10px 0;
-  background-color: palevioletred;
-  border-radius: 10px;
-  max-width: 250px;
-  text-align: center;
-  color: white;
-  font-weight: 500;
-}
-
-.left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: cornflowerblue;
-}
-
-#kanji {
-  font-size: 2em;
-  font-weight: 500;
-  color: white;
-}
-
-.contents {
-  padding-left: 0;
 }

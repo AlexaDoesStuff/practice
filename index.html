@@ -6,31 +6,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name ="viewport" content="width=device-width, initial-scale-1.0" />
-    <title>Practice JavaScript</title> 
+    <title>Infinite Scroll With Unsplash</title> 
   </head>
 
   <body>
-    <div class="contents d-flex flex-row col-8">
-
-      <div class="left col-5">
-        <div id="kanji">
+    <div class="container d-flex flex-row">
+      <div class="left col-4">
+        I will be implementing a infinite scroll application here. <br/>
+        We still need to touch on a few topics:
+        <ul>
+          <li>Closure</li>
+          <li>Promises</li>
+          <li>Async Fetching</li>
+          <li>HTML/CSS</li>
+        </ul>
+      </div>
+      <div class="right col-8">
+        <h1>Quotes For The Soul</h1>
+        <!-- This is the window of infinite scrolling. -->
+        <div id="quote-container">
 
         </div>
-        <div class="buttons">
-          <button id="left-click">＜</button>
-          <button id="right-click">＞</button>
-        </div>
       </div>
-
-      <div id="answers" class="col-7">
-        <span class="identifier">Meaning</span> 
-        <span id="meaning-field"></span>
-        <span class="identifier">Example Sentences</span>
-        <span id="example-field"></span>
-        <span class="identifier">Related Words / Notes</span>
-        <span id="related-field"></span>
-      </div>
-
     </div>
   </body>
   <script src="app.js"></script>
