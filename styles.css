@@ -4,17 +4,70 @@
   src:  url('static/fonts/ApfelGrotezk-Regular.woff') format('woff');
 }
 
-.container {
-  font-family: 'Apfel';
+html {
+  overflow: hidden;
 }
 
-.left, .right {
+.container {
+  font-family: 'Apfel';
+  text-align: center;
+}
+
+.stores {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.stores img {
+  width: 220px;
+  height: 230px;
+}
+
+.headers {
   padding: 2em;
 }
 
-.quote {
-  border-radius: 5px;
-  border: 1px solid black;
-  min-width: 500px;
-  margin: 10px 0 10px 0;
+.energy {
+  padding-top: 3em;
+}
+
+.energy-meter {
+  width: 100%;
+  background-color: #94fa75;
+  height: 50px;
+  /* margin: 0 auto; Commented out to make it look like its decreasing better */
+  margin-top: 20px;
+}
+
+.visit {
+  background-color: #fa75d9;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Ripped from W3 Schools LOL */
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: block;
+}
+
+.modal-window {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
 }

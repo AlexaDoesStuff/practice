@@ -6,27 +6,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name ="viewport" content="width=device-width, initial-scale-1.0" />
-    <title>Infinite Scroll With Unsplash</title> 
+    <title>Ordering With Local Storage</title> 
   </head>
 
   <body>
-    <div class="container d-flex flex-row">
-      <div class="left col-4">
-        I will be implementing a infinite scroll application here. <br/>
-        We still need to touch on a few topics:
-        <ul>
-          <li>Closure</li>
-          <li>Promises</li>
-          <li>Async Fetching</li>
-          <li>HTML/CSS</li>
-        </ul>
-      </div>
-      <div class="right col-8">
-        <h1>Quotes For The Soul</h1>
-        <!-- This is the window of infinite scrolling. -->
-        <div id="quote-container">
-
+    <div class="container">
+      <div class="eki">
+        <div class="headers">
+          <h1>喜多見、世田谷にようこうそ！</h1>
+          <p>What should we do today?</p>
         </div>
+  
+        <div class="stores">
+          <div class="energy">
+            Each store takes 5 calories to visit.
+            Watch out for your energy meter! (Implementation of promises).
+            <div class="energy-meter" id="energy-meter"></div>
+            <span id="totals"></span>
+          </div>
+          <div class="onigiri shop">
+            <img src="static/images/onigiri.png" />
+          </div>
+          <div class="drinks shop">
+            <img src="static/images/drinks.png" alt="" >
+          </div>
+          <div class="panya shop">
+            <img src="static/images/panya.png" alt="" >
+          </div>
+        </div>
+      </div>
+
+      <div class="modal hidden" id="modal">
+        <div class="modal-window">
+          <span id="modal-contents">Checking energy...</span>
+        </div>
+        <!-- <span class="close-button">&times;</span> -->
       </div>
     </div>
   </body>
