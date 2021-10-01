@@ -1,0 +1,41 @@
+/* Main Font for vocabulary_exercise branch */
+@font-face {
+  font-family: 'Apfel';
+  src:  url('static/fonts/ApfelGrotezk-Regular.woff') format('woff');
+}
+
+div#answers {
+  font-family: "Apfel";
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.identifier {
+  padding: 10px 0 10px 0;
+  margin: 10px 0 10px 0;
+  background-color: palevioletred;
+  border-radius: 10px;
+  max-width: 250px;
+  text-align: center;
+  color: white;
+  font-weight: 500;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: cornflowerblue;
+}
+
+#kanji {
+  font-size: 2em;
+  font-weight: 500;
+  color: white;
+}
+
+.contents {
+  padding-left: 0;
+}
