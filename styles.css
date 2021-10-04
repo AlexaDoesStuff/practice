@@ -4,70 +4,56 @@
   src:  url('static/fonts/ApfelGrotezk-Regular.woff') format('woff');
 }
 
-html {
-  overflow: hidden;
+:root {
+  --grey-color: #edf2fb;
+  --blue-color: #b6ccfe;
+  --header-color: #ccd5ae;
+  --header-text: #000;
+  --header-text-white: #fff;
 }
 
-.container {
-  font-family: 'Apfel';
-  text-align: center;
-}
-
-.stores {
+.header {
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  grid-template-columns: 1fr 3fr;
+
+  font-family: 'P22 Mackinac';
+  font-size: 1.5em;
+  color: var(--header-text);
+
+  padding: 1em;
+
+  background-color: var(--header-color);
 }
 
-.stores img {
-  width: 220px;
-  height: 230px;
+.logo-l {
+  text-transform: uppercase;
 }
 
-.headers {
-  padding: 2em;
+.banner {
+  background: url('./static/images/switzerland_cover.jpeg');
+  background-size: cover;
+  background-position: center;
+
+  width: 100vw;
+  height: 240px;
 }
 
-.energy {
-  padding-top: 3em;
+.browseables {
+  display: grid;
+  grid-gap: 1em;
+  
+  height: 100vh;
 }
 
-.energy-meter {
-  width: 100%;
-  background-color: #94fa75;
-  height: 50px;
-  /* margin: 0 auto; Commented out to make it look like its decreasing better */
-  margin-top: 20px;
+.ranking {
+  background-color: var(--grey-color);
+  grid-column-start: 1;
+  grid-column-end: 3; 
 }
 
-.visit {
-  background-color: #fa75d9;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-
-.hidden {
-  display: none !important;
-}
-
-/* Ripped from W3 Schools LOL */
-.modal {
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  display: block;
-}
-
-.modal-window {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+.blogs {
+  background-color: var(--blue-color);
+  grid-column-start: 3;
+  grid-column-end: 7; 
 }
