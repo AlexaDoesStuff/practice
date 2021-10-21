@@ -4,56 +4,17 @@
   src:  url('static/fonts/ApfelGrotezk-Regular.woff') format('woff');
 }
 
-:root {
-  --grey-color: #edf2fb;
-  --blue-color: #b6ccfe;
-  --header-color: #ccd5ae;
-  --header-text: #000;
-  --header-text-white: #fff;
-}
-
 .header {
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr 3fr;
-
-  font-family: 'P22 Mackinac';
-  font-size: 1.5em;
-  color: var(--header-text);
-
-  padding: 1em;
-
-  background-color: var(--header-color);
+  display: flex;
 }
 
-.logo-l {
-  text-transform: uppercase;
-}
-
-.banner {
-  background: url('./static/images/switzerland_cover.jpeg');
-  background-size: cover;
-  background-position: center;
-
-  width: 100vw;
-  height: 240px;
-}
-
-.browseables {
-  display: grid;
-  grid-gap: 1em;
-  
+/* Problem 1A */
+div[class*="set"] {
   height: 100vh;
+  font-family: Apfel;
 }
 
-.ranking {
-  background-color: var(--grey-color);
-  grid-column-start: 1;
-  grid-column-end: 3; 
-}
-
-.blogs {
-  background-color: var(--blue-color);
-  grid-column-start: 3;
-  grid-column-end: 7; 
+.test-header {
+  display: flex;
+  align-items: center;
 }

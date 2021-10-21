@@ -6,25 +6,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name ="viewport" content="width=device-width, initial-scale-1.0" />
-    <title>Grid Webpage Mock-Up: Asian Beauty Website</title> 
+    <title>DOM and CSS Manipulation Practice</title> 
   </head>
 
   <body>
     <div>
-
-      <section class="header">
-        <div class="logo-l">Jelly Town</div>
-        <div class="menu-r">here we go</div>
+      <section class="header col-8 p-5">
+        <h2>For this problem, we will be testing CSS selection, nested DOM manipulation and closures.</h2>
       </section>
+    </div>
 
-      <section class="banner">
-      </section>
-
-      <section class="browseables">
-        <section class="ranking"></section>
-        <section class="blogs"></section>
-      </section>
-
+    <div class="col d-flex flex-col contents p-5">
+      <!-- 1A: Select all classes that contain set to manipulate atleast two style attributes -->
+      <!-- 1B: For all elements in class set, assign a random color via hex generator
+        Note hex generator uses. 0-9, a-f (how did i know that...) -->
+      <div class="one col-3 set">Test</div>
+      <div class="two col-3 set">test</div>
+      <div class="three col-3 set">gg</div>
+      <div class="four col-3 set">test</div>
     </div>
   </body>
   <script src="app.js"></script>
