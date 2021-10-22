@@ -6,41 +6,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name ="viewport" content="width=device-width, initial-scale-1.0" />
-    <title>Ordering With Local Storage</title> 
+    <title>Odin Project Workspace</title> 
   </head>
 
   <body>
     <div class="container">
-      <div class="eki">
-        <div class="headers">
-          <h1>喜多見、世田谷にようこうそ！</h1>
-          <p>What should we do today?</p>
-        </div>
-  
-        <div class="stores">
-          <div class="energy">
-            Each store takes 5 calories to visit.
-            Watch out for your energy meter! (Implementation of promises).
-            <div class="energy-meter" id="energy-meter"></div>
-            <span id="totals"></span>
-          </div>
-          <div class="onigiri shop">
-            <img src="static/images/onigiri.png" />
-          </div>
-          <div class="drinks shop">
-            <img src="static/images/drinks.png" alt="" >
-          </div>
-          <div class="panya shop">
-            <img src="static/images/panya.png" alt="" >
-          </div>
-        </div>
+      <div id="bookshelf">
+
+      </div>
+      <div>
+        <button id="add-card">Add Card</button>
       </div>
 
-      <div class="modal hidden" id="modal">
-        <div class="modal-window">
-          <span id="modal-contents">Checking energy...</span>
+      <div class="modal" id="modal">
+        <div class="modal-content">
+          <span id="close" class="close">&times;</span>
+          Add A New Book:
+          <form class="addbook">  
+            <label for="title">Book Title:</label>
+            <input type="text" name="title" required>
+            <label for="pages">Number of Pages</label>
+            <input type="text" name="pages" required>
+            <label for="author">Author</label>
+            <input type="text" name="author" required>
+            <button type="submit">Submit</button>
+          </form>
         </div>
-        <!-- <span class="close-button">&times;</span> -->
       </div>
     </div>
   </body>

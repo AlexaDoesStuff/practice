@@ -1,103 +1,81 @@
-var totals = document.getElementById('totals');
-const defaultEnergy = 15;
+const bookshelf = document.getElementById('bookshelf');
 
-// Set initial values 
+function Book(title, pages, author) {
+  this.title = title;
+  this.pages = pages;
+  this.author = author;
+  this.read = false;
+}
 
-window.addEventListener('DOMContentLoaded', (event) => {
-  localStorage.setItem('total', defaultEnergy);
-  localStorage.setItem('leftover', defaultEnergy);
-  totals.innerText = localStorage.getItem('leftover') + ' / ' + localStorage.getItem('total');
-  if(localStorage.getItem('location') == null) {
-    localStorage.setItem('location', 'eki')
-  } else {
-    let localLoc = localStorage.getItem('location');
+function createEntry(book) {
+  //For form based entries 
+  if(book.read === undefined) {
+    book.read = false;
   }
-});
+  const elem = document.createElement('div');
+  elem.classList.add('book-card');
+  elem.innerHTML = `${book.title} by ${book.author} (${book.pages}) <br\/> ${book.read}`;
+  bookshelf.appendChild(elem);
+}
 
-/* This sets the primary position of the application
-* SPA with menus, localStorage, Promises, Grid
-* And DOM manipulation
-*/
+if(localStorage.getItem('library') === null) {
+  var myLibrary = [];
+  const x = new Book('Harry Potter', '364', 'JK Rowling');
+  const y = new Book('Mans Search', '264', 'VF');
+  myLibrary.push(x);
+  myLibrary.push(y);
+  const originalBooks = JSON.stringify(myLibrary);
+  localStorage.setItem('library', originalBooks);
 
-var menus = document.querySelectorAll('.menu');
-
-/* This function calculates if we have enough energy to 
-* visit the stores we are choosing 
-*/
-
-function resolveEnergy(leftover, cost) {
-  return new Promise(function(resolve, reject) {
-    setTimeout(function() {
-      if(subtractEnergy(leftover, cost) >= 0) {
-        resolve('alrighty')
-      } else {
-        reject(Error('no more energy'));
-      }
-    }, 1000);
+  myLibrary.forEach(book => {
+    createEntry(book);
+  })
+} else {
+  var render = localStorage.getItem('library');
+  render = JSON.parse(render);
+  render.forEach(book => {
+    createEntry(book);
   })
 }
 
-const energyMeter = document.getElementById('energy-meter');
+const addBtn = document.getElementById('add-card');
+const modal = document.getElementById('modal');
+const close = document.getElementById('close');
 
-// Syntax practice for arrow functions
-
-function subtractEnergy(leftover, cost) {
-  var subtractions = leftover - cost;
-  var width = subtractions / defaultEnergy;
-  if(subtractions >= 0) {
-    localStorage.setItem('leftover', subtractions);
-    totals.innerText = localStorage.getItem('leftover') + ' / ' + localStorage.getItem('total');
-    energyMeter.style.width = `${width * 100}%`;
-  }
-  return subtractions;
+addBtn.onclick = function() {
+  modal.style.display = 'block';
 }
 
-/*
-I'm going to create a Promise link that
-Checks for appropriate energy 
-Runs over to the store dependent on how much energy it takes
-Loads the menu loader
-Then transitions to the menu
-*/
+close.onclick = function() {
+  modal.style.display = 'none';
+}
 
-const restaurants = document.querySelectorAll('.shop');
-const modalText = document.getElementById('modal-contents');
-const modal = document.getElementById('modal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
-// console.log(restaurants);
+const form = document.querySelector('form');
 
-restaurants.forEach(function(shop) {
-  // Event Listener for Mouse Over
-  shop.addEventListener("mouseover", function(){
-    shop.classList.add('visit')
-  });
-  // Event Listener for Mouse Out
-  shop.addEventListener("mouseout", function(){
-    shop.classList.remove('visit')
-  });
+function addFromForm(event) {
+  event.preventDefault();
 
-  /* This is a long one. Ties the modal behavior and the
-  * timeouts for energy logic once clicking on the shops, 
-  * and updates of the status within a modal. 
-  */
+  const data = new FormData(event.target);
+  const value = Object.fromEntries(data.entries());
 
-  shop.addEventListener("click", function() {
-    localStorage.setItem('location', shop.classList[0]);
-    modal.classList.remove('hidden');
+  var library = localStorage.getItem('library');
+  library = JSON.parse(library);
+  library.push(value);
 
-    resolveEnergy(localStorage.getItem('leftover'), 5).then((result) => {
-      modalText.innerText = "Running over...";
-      setTimeout(function() {
-        modalText.innerText = "Checking energy...";
-        modal.classList.add('hidden');
-      }, 1000)
-    }, 
-    function(error) {
-      modalText.innerText = "You're too tired! Try again tomorrow.";
-      setTimeout(function() {
-        modal.classList.add('hidden');
-      }, 1000)
-    });
+  localStorage.setItem('library', JSON.stringify(library));
 
-  });
-})
+  createEntry(value);
+
+  form.reset();
+  close.click();
+}
+
+form.addEventListener('submit', addFromForm);
+
+

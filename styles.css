@@ -13,45 +13,21 @@ html {
   text-align: center;
 }
 
-.stores {
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-columns: repeat(2, 1fr);
+#bookshelf {
+  display: flex;
 }
 
-.stores img {
-  width: 220px;
-  height: 230px;
-}
-
-.headers {
+.book-card {
+  width: 300px;
+  height: 200px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 1em;
   padding: 2em;
 }
 
-.energy {
-  padding-top: 3em;
-}
-
-.energy-meter {
-  width: 100%;
-  background-color: #94fa75;
-  height: 50px;
-  /* margin: 0 auto; Commented out to make it look like its decreasing better */
-  margin-top: 20px;
-}
-
-.visit {
-  background-color: #fa75d9;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-
-.hidden {
-  display: none !important;
-}
-
-/* Ripped from W3 Schools LOL */
 .modal {
+  display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -61,13 +37,30 @@ html {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  display: block;
 }
 
-.modal-window {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 2em;
   border: 1px solid #888;
-  width: 80%;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.addbook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.addbook input {
+  margin: 1em;
+  width: 300px;
 }
