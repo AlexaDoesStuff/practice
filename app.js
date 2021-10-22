@@ -1,3 +1,9 @@
+/* I changed the original prompt to be solely localStorage dependent. 
+* One difficulty I had is storing typed Objects locally; so what is being 
+* stored are parsed and unparsed objects with similar structure, but
+* aren't typed specifically as Books.
+*/
+
 const bookshelf = document.getElementById('bookshelf');
 
 function Book(title, pages, author) {
