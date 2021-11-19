@@ -11,28 +11,11 @@
 
   <body>
     <div class="container">
-      <div id="bookshelf">
-
+      <h2>Tic-Tac-Toe</h2>
+      <div id="gameboard">
+        
       </div>
-      <div>
-        <button id="add-card">Add Card</button>
-      </div>
-
-      <div class="modal" id="modal">
-        <div class="modal-content">
-          <span id="close" class="close">&times;</span>
-          Add A New Book:
-          <form class="addbook">  
-            <label for="title">Book Title:</label>
-            <input type="text" name="title" required>
-            <label for="pages">Number of Pages</label>
-            <input type="text" name="pages" required>
-            <label for="author">Author</label>
-            <input type="text" name="author" required>
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      </div>
+      <span id="winner">Winner: </span>
     </div>
   </body>
   <script src="app.js"></script>

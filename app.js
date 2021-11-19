@@ -1,87 +1,96 @@
-/* I changed the original prompt to be solely localStorage dependent. 
-* One difficulty I had is storing typed Objects locally; so what is being 
-* stored are parsed and unparsed objects with similar structure, but
-* aren't typed specifically as Books.
+/* Tic Tac Toe game implementation
+* With dynamic board (versus statically coded)
+*
+*
 */
 
-const bookshelf = document.getElementById('bookshelf');
+// window.addEventListener('DOMContentLoaded', function() {
+//   alert('You need two players to play. Click on the grey tiles to mark. Player 1 (X) will start!');
+// });
 
-function Book(title, pages, author) {
-  this.title = title;
-  this.pages = pages;
-  this.author = author;
-  this.read = false;
-}
+const gameboard = document.getElementById('gameboard');
+const winner = document.getElementById('winner');
+// const Player = 
 
-function createEntry(book) {
-  //For form based entries 
-  if(book.read === undefined) {
-    book.read = false;
+const gameBoard = (() => {
+  var tileArray = ['','','','','','','','',''];
+  var currentPlayer = 'X'; 
+  var moves = 0;
+  var win = false;
+
+  const getCurrentPlayer = () => {return currentPlayer};
+
+  function markTile(index) {
+    var temp = currentPlayer;
+    tileArray[index] = currentPlayer;
+
+    if(currentPlayer === 'X') {
+      currentPlayer = 'O';
+      console.log('set o');
+    } else if (currentPlayer === 'O') {
+      currentPlayer = 'X';
+      console.log('set x');
+    };
+
+    moves++;
+    deduceTie();
+    deduceWin(tileArray);
+    return temp;
   }
-  const elem = document.createElement('div');
-  elem.classList.add('book-card');
-  elem.innerHTML = `${book.title} by ${book.author} (${book.pages}) <br\/> ${book.read}`;
-  bookshelf.appendChild(elem);
-}
 
-if(localStorage.getItem('library') === null) {
-  var myLibrary = [];
-  const x = new Book('Harry Potter', '364', 'JK Rowling');
-  const y = new Book('Mans Search', '264', 'VF');
-  myLibrary.push(x);
-  myLibrary.push(y);
-  const originalBooks = JSON.stringify(myLibrary);
-  localStorage.setItem('library', originalBooks);
-
-  myLibrary.forEach(book => {
-    createEntry(book);
-  })
-} else {
-  var render = localStorage.getItem('library');
-  render = JSON.parse(render);
-  render.forEach(book => {
-    createEntry(book);
-  })
-}
-
-const addBtn = document.getElementById('add-card');
-const modal = document.getElementById('modal');
-const close = document.getElementById('close');
-
-addBtn.onclick = function() {
-  modal.style.display = 'block';
-}
-
-close.onclick = function() {
-  modal.style.display = 'none';
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  // In theory, could also implement promises.
+  function deduceWin(tilePositions) {
+    var wins = [[0,3,6], [1,4,7], [2,5,8], [0,1,2], [3,4,5], [6,7,8], [0,4,8], [2,4,6]];
+    for(var i = 0; i < wins.length; i++) {
+      var strings;
+      strings = tilePositions[wins[i][0]] + tilePositions[wins[i][1]] + tilePositions[wins[i][2]];
+      if(strings === 'XXX') {
+        setTimeout(() => {alert("Player X Wins!")}, 100);
+        var x = document.createElement('span');
+        x.innerHTML = 'X';
+        winner.appendChild(x);
+        setTimeout(() => {location.reload()}, 2000);
+      } else if (strings === 'OOO') {
+        setTimeout(() => {alert("Player O Wins!")}, 100);
+        var x = document.createElement('span');
+        x.innerHTML = 'O';
+        winner.appendChild(x);
+        setTimeout(() => {location.reload()}, 2000);
+      } 
+    }
   }
-}
 
-const form = document.querySelector('form');
+  function deduceTie() {
+    if(moves === 9 && !win) {
+      setTimeout(() => {alert("No more moves!")}, 100);
+    }
+  }
 
-function addFromForm(event) {
-  event.preventDefault();
+  function createBoard() {
+    const maxTiles = tileArray.length;  
+    for(var i = 0; i < maxTiles; i++) {
+      var newTile = document.createElement('div');
+      newTile.classList.add('tile');
+      var tileButton = document.createElement('button');
+      tileButton.classList.add('tile-button');
+      tileButton.value = i;
+      newTile.appendChild(tileButton);
+      gameboard.appendChild(newTile);
+    }
+  }
 
-  const data = new FormData(event.target);
-  const value = Object.fromEntries(data.entries());
+  return {deduceWin, deduceTie, createBoard, markTile, getCurrentPlayer}
+})();
 
-  var library = localStorage.getItem('library');
-  library = JSON.parse(library);
-  library.push(value);
+gameBoard.createBoard();
 
-  localStorage.setItem('library', JSON.stringify(library));
+var tiles = document.querySelectorAll('.tile-button');
+tiles.forEach((tile) => {
+  tile.addEventListener('click', function() {
+    tile.innerHTML = gameBoard.markTile(tile.value);
+  })
+})
 
-  createEntry(value);
+var startGame = document.getElementById('start');
 
-  form.reset();
-  close.click();
-}
-
-form.addEventListener('submit', addFromForm);
-
-
+gameBoard.deduceWin();
