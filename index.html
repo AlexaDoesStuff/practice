@@ -6,16 +6,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name ="viewport" content="width=device-width, initial-scale-1.0" />
-    <title>Odin Project Workspace</title> 
+    <title>Recursion Practice</title> 
+
+    <link href="/dist/output.css" rel="stylesheet">
   </head>
 
   <body>
     <div class="container">
-      <h2>Tic-Tac-Toe</h2>
-      <div id="gameboard">
-        
+      <h2>Recursion Practice</h2>
+      <div class="d-flex flex-col w-100">
+        <div class="col-5">
+          <section class="leftside">
+            <h5>1. Using a recursive function, replicate the getElementById function to highlight a single value.</h5>
+          </section>
+          <section class="leftside">
+            <h5>Select the element ID you would like to choose:</h5>
+            <input id="get-id"></input>
+          </section>
+          <span class="small note">Note: Default behavior is that the selected ID will be highlighted in red.</span>
+          <section>
+            <button id="first-button">Test it out!</button>
+          </section>
+          <section id="first-error">
+
+          </section>
+
+          <hr>
+
+          <section class="leftside">
+            <h5>1. Using a recursive function, list all elements and their children from the right-side block.</h5>
+          </section>
+          <section>
+            Outcome: <br/>
+            <div id="output">
+
+            </div>
+          </section>
+          <button id="second-button">Test it out!</button>
+        </div>
+        <div class="col-7 html" id="html">
+          HTML Div (class: html)
+          <section class="class1 general" id="section1">
+            Class 1, Section 1 (class: [class1, general], id: section1)
+          </section>
+          <section class="class1 general" id="section2">
+            Class 1, Section 2 (class: [class1, general], id: section2)
+          </section>
+          <section class="class2 general" id="section3">
+            Class 2, Section 3 (class: [class2, general], id: section3)
+            <section class="class2 inner" id="i1">
+              Class 2, Inner Section 1 (class: [class2, inner], id: i1)
+              <section class="class2 inner" id="ii1">
+                Class 2, Inner Inner Section 1 (class: [class2, inner], id: ii1)
+                <section class="class2 inner" id="iii1">
+                  Class 2, Inner Inner Inner Section 1 (class: [class2, inner], id: iii1)
+                </section>
+              </section>
+              <section class="class2 inner" id="ii2">
+                Class 2, Inner Inner Section 2 (class: [class2, inner], id: ii2)
+              </section>
+            </section>
+          </section>
+        </div>
       </div>
-      <span id="winner">Winner: </span>
     </div>
   </body>
   <script src="app.js"></script>
